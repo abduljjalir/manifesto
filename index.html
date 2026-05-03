@@ -3,20 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>USAA Manifesto Flipbook</title>
+<title>USAA Manifesto</title>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
 
 <style>
+
+/* ===== GLOBAL ===== */
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: radial-gradient(circle at top, #0f172a, #0b1220);
-    overflow: hidden;
+     background: #f1f1f1;
     color: white;
+    overflow-x: hidden;
 }
 
+/* BOOK WRAPPER */
 .book-wrapper {
     height: 100vh;
     display: flex;
@@ -24,111 +27,98 @@ body {
     align-items: center;
 }
 
+/* BOOK */
 #book {
-    width: 90vh;
-    height: 75vh;
+    width: 90vw;
+    height: 80vh;
     max-width: 900px;
     max-height: 600px;
-}
-
-/* NAV BAR */
-.navbar {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 12px 18px;
-    border-radius: 50px;
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(12px);
-}
-
-/* BUTTONS */
-button {
-    background: #e63946;
-    border: none;
-    color: white;
-    padding: 10px 14px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-/* PROGRESS */
-.progress-ring {
-    width: 42px;
-    height: 42px;
-    transform: rotate(-90deg);
-}
-
-.circle-bg {
-    fill: none;
-    stroke: rgba(255,255,255,0.2);
-    stroke-width: 4;
-}
-
-.circle {
-    fill: none;
-    stroke: #e63946;
-    stroke-width: 4;
-    stroke-linecap: round;
-    transition: 0.3s;
+    border-radius: 16px;
+    overflow: hidden;
 }
 
 /* PAGE */
 .page {
     background: white;
     color: black;
-    padding: 30px;
+    padding: 25px;
     box-sizing: border-box;
+    border-radius: 10px;
 }
 
-/* COVER */
+/* ===== COVER ===== */
 .cover {
-    display: flex;
+    padding: 0;
+    position: relative;
+}
+
+.cover-layout {
+    width: 100%;
     height: 100%;
-}
-
-.left {
-    width: 50%;
-    background: linear-gradient(135deg, #e63946, #c1121f);
+    position: relative;
+    background: linear-gradient(135deg, #e63946 60%, #1d3557 40%);
     color: white;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
-.left h1 {
-    font-size: 50px;
+/* TOP */
+.cover-top {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.badge {
+    background: #1d3557;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+/* TITLE */
+.cover-main {
+    position: absolute;
+    left: 15px;
+    top: 40%;
+    transform: translateY(-50%);
+}
+
+.cover-main h1 {
+    font-size: 42px;
     margin: 0;
 }
 
-.right {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #f1f5f9;
+.cover-main h2 {
+    margin: 5px 0;
 }
 
-.photo-box {
-    width: 220px;
-    height: 260px;
-    border-radius: 20px;
+/* IMAGE */
+.cover-image {
+    position: absolute;
+    right: 10px;
+    top: 20%;
+    width: 130px;
+    height: 170px;
+    border: 5px solid white;
+    border-radius: 15px;
     overflow: hidden;
-    border: 6px solid #e63946;
+    background: #ccc;
 }
 
-.photo-box img {
+.cover-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-/* CARDS */
+/* BOTTOM */
+.cover-bottom {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    font-size: 12px;
+}
+
+/* ===== CARDS ===== */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -149,22 +139,44 @@ button {
     background: rgba(230,57,70,0.15);
 }
 
+/* ===== NAV BUTTONS ===== */
+#prevBtn, #nextBtn {
+    position: fixed;
+    bottom: 20px;
+    z-index: 1000;
+    background: rgba(230,57,70,0.9);
+    color: white;
+    border: none;
+    padding: 14px 18px;
+    font-size: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+#prevBtn { left: 15px; }
+#nextBtn { right: 15px; }
+
+/* ===== FOOTER ===== */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 15px;
+    font-size: 12px;
+    background: rgba(15,23,42,0.8);
+    backdrop-filter: blur(10px);
+}
+
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
 
-    .navbar {
-        width: 95%;
-        justify-content: center;
-        gap: 10px;
-        padding: 10px;
-    }
-
-    button {
-        padding: 8px 10px;
-        font-size: 14px;
-    }
-
-    #pageCounter {
-        font-size: 12px;
+    #book {
+        width: 95vw;
+        height: 80vh;
     }
 
     .card-grid {
@@ -172,9 +184,23 @@ button {
     }
 
     .left h1 {
-        font-size: 36px;
+        font-size: 15px;
     }
+
+    .photo-box {
+        width: 130px;
+        height: 160px;
+    }
+    .page {
+        padding: 15px;
+    }
+    .cover {
+        flex-direction: column;
+    }
+
+   
 }
+
 </style>
 </head>
 
@@ -183,80 +209,57 @@ button {
 <div class="book-wrapper">
     <div id="book">
 
-        <!-- PAGE 1 -->
+        <!-- COVER -->
         <div class="page cover">
-            <div class="left">
-                <h1>VOTE</h1>
-                <h2>YOUR NAME</h2>
-                <p>USAA Presidential Candidate</p>
-                <p>Unity • Welfare • Opportunity</p>
-                <p>🇺🇬 🇩🇿</p>
-            </div>
-            <div class="right">
-                <div class="photo-box">
-                    <img src="images/o1.jpeg" alt="Candidate Photo">
-                </div>
-            </div>
+    <div class="cover-layout">
+
+        <div class="cover-top">
+            <span class="badge">USAA</span>
         </div>
 
-        <!-- PAGE 2 -->
+        <div class="cover-main">
+            <h1>VOTE</h1>
+            <h2>YOUR NAME</h2>
+            <p>USAA Presidential Candidate</p>
+        </div>
+
+        <div class="cover-image">
+            <img src="images/o1.jpeg" alt="Candidate">
+        </div>
+
+        <div class="cover-bottom">
+            <p>Unity • Welfare • Opportunity</p>
+            <p>🇺🇬 🇩🇿</p>
+        </div>
+
+    </div>
+</div>
+
+        <!-- INTRO -->
         <div class="page">
             <h2>Introduction</h2>
             <p>I stand before you not just as a candidate, but as one of you.</p>
         </div>
 
-        <!-- PAGE 3 -->
+        <!-- COMMUNITY -->
         <div class="page">
             <h2>Community</h2>
-            <p>We aim to build a united student community.</p>
-
             <div class="card-grid">
-                <div class="card">
-                    <h3>👥 Big Sibling</h3>
-                    <p>Mentorship program for new students.</p>
-                </div>
-
-                <div class="card">
-                    <h3>🎉 Cultural Nights</h3>
-                    <p>Celebrate diversity through events.</p>
-                </div>
-
-                <div class="card">
-                    <h3>🤝 Inclusion</h3>
-                    <p>Every student is valued.</p>
-                </div>
-
-                <div class="card">
-                    <h3>⚽ Sports</h3>
-                    <p>Games and social activities.</p>
-                </div>
+                <div class="card"><h3>👥 Big Sibling</h3><p>Mentorship program.</p></div>
+                <div class="card"><h3>🎉 Cultural Nights</h3><p>Celebrate diversity.</p></div>
+                <div class="card"><h3>🤝 Inclusion</h3><p>Everyone matters.</p></div>
+                <div class="card"><h3>⚽ Sports</h3><p>Social engagement.</p></div>
             </div>
         </div>
 
-        <!-- PAGE 4 -->
+        <!-- WELFARE -->
         <div class="page">
             <h2>Welfare</h2>
-
             <div class="card-grid">
-                <div class="card">
-                    <h3>💊 Health</h3>
-                    <p>Access to medical support.</p>
-                </div>
-
-                <div class="card">
-                    <h3>📚 Study Help</h3>
-                    <p>Academic support system.</p>
-                </div>
-
-                <div class="card">
-                    <h3>🍲 Food Aid</h3>
-                    <p>Emergency assistance programs.</p>
-                </div>
-
-                <div class="card">
-                    <h3>💼 Careers</h3>
-                    <p>Internships and job guidance.</p>
-                </div>
+                <div class="card"><h3>💊 Health</h3><p>Medical support.</p></div>
+                <div class="card"><h3>📚 Study Help</h3><p>Academic support.</p></div>
+                <div class="card"><h3>🍲 Food Aid</h3><p>Emergency help.</p></div>
+                <div class="card"><h3>💼 Careers</h3><p>Job guidance.</p></div>
             </div>
         </div>
 
@@ -264,77 +267,56 @@ button {
 </div>
 
 <!-- NAV -->
-<div class="navbar">
-    <button id="prev">◀</button>
+<button id="prevBtn">⬅</button>
+<button id="nextBtn">➡</button>
 
-    <svg class="progress-ring">
-        <circle class="circle-bg" cx="21" cy="21" r="18"></circle>
-        <circle class="circle" cx="21" cy="21" r="18"></circle>
-    </svg>
-
-    <span id="pageCounter">1 / 4</span>
-
-    <button id="next">▶</button>
+<div class="footer">
+    <div class="footer-left">USAA Manifesto</div>
+    <div class="footer-center" id="pageCounter">1 / 4</div>
+    <div class="footer-right">Unity • Welfare • Opportunity</div>
 </div>
+
 <script>
 $(document).ready(function () {
 
     let isMobile = window.innerWidth < 768;
 
     const pageFlip = new St.PageFlip(document.getElementById("book"), {
-        width: isMobile ? window.innerWidth * 0.9 : 450,
-        height: isMobile ? window.innerHeight * 0.7 : 600,
+        width: isMobile ? window.innerWidth * 0.95 : 390,
+        height: isMobile ? window.innerHeight * 0.7 : 650,
         size: "stretch",
         showCover: true,
-        maxShadowOpacity: 0.5
+        usePortrait: true,
+        maxShadowOpacity: 0.3,
     });
 
     pageFlip.loadFromHTML(document.querySelectorAll("#book .page"));
 
-    // NAVIGATION
-    $("#next").click(() => pageFlip.flipNext());
-    $("#prev").click(() => pageFlip.flipPrev());
+    $("#nextBtn").click(() => pageFlip.flipNext());
+    $("#prevBtn").click(() => pageFlip.flipPrev());
 
-    // KEYBOARD
     $(document).keydown(function (e) {
         if (e.key === "ArrowRight") pageFlip.flipNext();
         if (e.key === "ArrowLeft") pageFlip.flipPrev();
     });
 
-    // PROGRESS RING
-    const circle = document.querySelector(".circle");
-    const radius = circle.r.baseVal.value;
-    const circumference = 2 * Math.PI * radius;
-
-    circle.style.strokeDasharray = circumference;
-    circle.style.strokeDashoffset = circumference;
-
-    function setProgress(percent) {
-        circle.style.strokeDashoffset =
-            circumference - (percent / 100) * circumference;
-    }
-
     pageFlip.on("flip", (e) => {
         const current = e.data + 1;
         const total = pageFlip.getPageCount();
-
         $("#pageCounter").text(`${current} / ${total}`);
-        setProgress((current / total) * 100);
     });
 
-    // FIXED RESPONSIVE RESIZE
     window.addEventListener("resize", () => {
         isMobile = window.innerWidth < 768;
 
         pageFlip.update({
-            width: isMobile ? window.innerWidth * 0.9 : 450,
+            width: isMobile ? window.innerWidth * 0.95 : 450,
             height: isMobile ? window.innerHeight * 0.7 : 600
         });
     });
 
 });
 </script>
-
 
 </body>
 </html>
