@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USAA Manifesto Flipbook</title>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top, #0f172a, #0b1220);
+    overflow: hidden;
+    color: white;
+}
+
+.book-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#book {
+    width: 90vh;
+    height: 75vh;
+    max-width: 900px;
+    max-height: 600px;
+}
+
+/* NAV BAR */
+.navbar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 18px;
+    border-radius: 50px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+}
+
+/* BUTTONS */
+button {
+    background: #e63946;
+    border: none;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* PROGRESS */
+.progress-ring {
+    width: 42px;
+    height: 42px;
+    transform: rotate(-90deg);
+}
+
+.circle-bg {
+    fill: none;
+    stroke: rgba(255,255,255,0.2);
+    stroke-width: 4;
+}
+
+.circle {
+    fill: none;
+    stroke: #e63946;
+    stroke-width: 4;
+    stroke-linecap: round;
+    transition: 0.3s;
+}
+
+/* PAGE */
+.page {
+    background: white;
+    color: black;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/* COVER */
+.cover {
+    display: flex;
+    height: 100%;
+}
+
+.left {
+    width: 50%;
+    background: linear-gradient(135deg, #e63946, #c1121f);
+    color: white;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.left h1 {
+    font-size: 50px;
+    margin: 0;
+}
+
+.right {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f1f5f9;
+}
+
+.photo-box {
+    width: 220px;
+    height: 260px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 6px solid #e63946;
+}
+
+.photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* CARDS */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.card {
+    padding: 15px;
+    border-radius: 14px;
+    background: rgba(230,57,70,0.08);
+    border: 1px solid rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    background: rgba(230,57,70,0.15);
+}
+
+@media (max-width: 768px) {
+
+    .navbar {
+        width: 95%;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    button {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    #pageCounter {
+        font-size: 12px;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .left h1 {
+        font-size: 36px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="book-wrapper">
+    <div id="book">
+
+        <!-- PAGE 1 -->
+        <div class="page cover">
+            <div class="left">
+                <h1>VOTE</h1>
+                <h2>YOUR NAME</h2>
+                <p>USAA Presidential Candidate</p>
+                <p>Unity • Welfare • Opportunity</p>
+                <p>🇺🇬 🇩🇿</p>
+            </div>
+            <div class="right">
+                <div class="photo-box">
+                    <img src="images/o1.jpeg" alt="Candidate Photo">
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 2 -->
+        <div class="page">
+            <h2>Introduction</h2>
+            <p>I stand before you not just as a candidate, but as one of you.</p>
+        </div>
+
+        <!-- PAGE 3 -->
+        <div class="page">
+            <h2>Community</h2>
+            <p>We aim to build a united student community.</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3>👥 Big Sibling</h3>
+                    <p>Mentorship program for new students.</p>
+                </div>
+
+                <div class="card">
+                    <h3>🎉 Cultural Nights</h3>
+                    <p>Celebrate diversity through events.</p>
+                </div>
+
+                <div class="card">
+                    <h3>🤝 Inclusion</h3>
+                    <p>Every student is valued.</p>
+                </div>
+
+                <div class="card">
+                    <h3>⚽ Sports</h3>
+                    <p>Games and social activities.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 4 -->
+        <div class="page">
+            <h2>Welfare</h2>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3>💊 Health</h3>
+                    <p>Access to medical support.</p>
+                </div>
+
+                <div class="card">
+                    <h3>📚 Study Help</h3>
+                    <p>Academic support system.</p>
+                </div>
+
+                <div class="card">
+                    <h3>🍲 Food Aid</h3>
+                    <p>Emergency assistance programs.</p>
+                </div>
+
+                <div class="card">
+                    <h3>💼 Careers</h3>
+                    <p>Internships and job guidance.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- NAV -->
+<div class="navbar">
+    <button id="prev">◀</button>
+
+    <svg class="progress-ring">
+        <circle class="circle-bg" cx="21" cy="21" r="18"></circle>
+        <circle class="circle" cx="21" cy="21" r="18"></circle>
+    </svg>
+
+    <span id="pageCounter">1 / 4</span>
+
+    <button id="next">▶</button>
+</div>
+<script>
+$(document).ready(function () {
+
+    let isMobile = window.innerWidth < 768;
+
+    const pageFlip = new St.PageFlip(document.getElementById("book"), {
+        width: isMobile ? window.innerWidth * 0.9 : 450,
+        height: isMobile ? window.innerHeight * 0.7 : 600,
+        size: "stretch",
+        showCover: true,
+        maxShadowOpacity: 0.5
+    });
+
+    pageFlip.loadFromHTML(document.querySelectorAll("#book .page"));
+
+    // NAVIGATION
+    $("#next").click(() => pageFlip.flipNext());
+    $("#prev").click(() => pageFlip.flipPrev());
+
+    // KEYBOARD
+    $(document).keydown(function (e) {
+        if (e.key === "ArrowRight") pageFlip.flipNext();
+        if (e.key === "ArrowLeft") pageFlip.flipPrev();
+    });
+
+    // PROGRESS RING
+    const circle = document.querySelector(".circle");
+    const radius = circle.r.baseVal.value;
+    const circumference = 2 * Math.PI * radius;
+
+    circle.style.strokeDasharray = circumference;
+    circle.style.strokeDashoffset = circumference;
+
+    function setProgress(percent) {
+        circle.style.strokeDashoffset =
+            circumference - (percent / 100) * circumference;
+    }
+
+    pageFlip.on("flip", (e) => {
+        const current = e.data + 1;
+        const total = pageFlip.getPageCount();
+
+        $("#pageCounter").text(`${current} / ${total}`);
+        setProgress((current / total) * 100);
+    });
+
+    // FIXED RESPONSIVE RESIZE
+    window.addEventListener("resize", () => {
+        isMobile = window.innerWidth < 768;
+
+        pageFlip.update({
+            width: isMobile ? window.innerWidth * 0.9 : 450,
+            height: isMobile ? window.innerHeight * 0.7 : 600
+        });
+    });
+
+});
+</script>
+
+
+</body>
+</html>
