@@ -13,43 +13,37 @@
 /* ===== GLOBAL ===== */
 body {
     margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
     font-family: 'Segoe UI', sans-serif;
-     background: #f1f1f1;
-    color: white;
-    overflow-x: hidden;
-}
-
-/* BOOK WRAPPER */
-.book-wrapper {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* BOOK */
-#book {
-    width: 90vw;
-    height: 80vh;
-    max-width: 900px;
-    max-height: 600px;
-    border-radius: 16px;
     overflow: hidden;
 }
 
-/* PAGE */
+/* ===== BOOK FULLSCREEN ===== */
+#book {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* ===== PAGE ===== */
 .page {
-    background: white;
+    background: skyblue;
     color: black;
-    padding: 25px;
+    padding: 40px;
     box-sizing: border-box;
-    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 /* ===== COVER ===== */
 .cover {
     padding: 0;
-    position: relative;
+    height: 100vh;
 }
 
 .cover-layout {
@@ -60,48 +54,43 @@ body {
     color: white;
 }
 
-/* TOP */
 .cover-top {
     position: absolute;
-    top: 15px;
-    left: 15px;
+    top: 5px;
+    left: 5px;
 }
 
 .badge {
+margin-left: 0;
     background: #1d3557;
-    padding: 6px 12px;
+    padding: 10px 15px;
     border-radius: 8px;
-    font-size: 12px;
+    font-size: 18px;
 }
 
-/* TITLE */
 .cover-main {
     position: absolute;
-    left: 15px;
-    top: 40%;
+    left: 5px;
+    top: 125px;
     transform: translateY(-50%);
 }
 
 .cover-main h1 {
-    font-size: 42px;
+    font-size: 18px;
     margin: 0;
 }
 
-.cover-main h2 {
-    margin: 5px 0;
-}
-
-/* IMAGE */
 .cover-image {
     position: absolute;
     right: 10px;
     top: 20%;
-    width: 130px;
-    height: 170px;
+    width: 220px;
+    height: 280px;
     border: 5px solid white;
     border-radius: 15px;
     overflow: hidden;
-    background: #ccc;
+    transition: all 0.3s ease;
+    background: red;
 }
 
 .cover-image img {
@@ -110,7 +99,6 @@ body {
     object-fit: cover;
 }
 
-/* BOTTOM */
 .cover-bottom {
     position: absolute;
     bottom: 15px;
@@ -123,82 +111,65 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
-    margin-top: 15px;
 }
 
 .card {
     padding: 15px;
-    border-radius: 14px;
-    background: rgba(230,57,70,0.08);
-    border: 1px solid rgba(0,0,0,0.08);
-    transition: 0.3s;
+    border-radius: 12px;
+    background: #f8fafc;
+    border: 1px solid #eee;
 }
 
-.card:hover {
-    transform: translateY(-6px);
-    background: rgba(230,57,70,0.15);
-}
-
-/* ===== NAV BUTTONS ===== */
+/* ===== NAV (SUBTLE OVERLAY) ===== */
 #prevBtn, #nextBtn {
     position: fixed;
-    bottom: 20px;
-    z-index: 1000;
-    background: rgba(230,57,70,0.9);
-    color: white;
-    border: none;
-    padding: 14px 18px;
-    font-size: 18px;
+    bottom: 70px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
-    cursor: pointer;
+    border: none;
+    background: rgba(0,0,0,0.4);
+    color: white;
+    font-size: 18px;
     backdrop-filter: blur(10px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    cursor: pointer;
 }
 
-#prevBtn { left: 15px; }
-#nextBtn { right: 15px; }
+#prevBtn { left: 10px; }
+#nextBtn { right: 10px; }
 
-/* ===== FOOTER ===== */
+/* ===== FOOTER BAR ===== */
 .footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+    height: 45px;
     display: flex;
     justify-content: space-between;
-    padding: 8px 15px;
+    align-items: center;
+    padding: 0 15px;
+    background: rgba(255,255,255,0.95);
+    border-top: 1px solid #ddd;
     font-size: 12px;
-    background: rgba(15,23,42,0.8);
-    backdrop-filter: blur(10px);
 }
 
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
-
-    #book {
-        width: 95vw;
-        height: 80vh;
-    }
-
     .card-grid {
         grid-template-columns: 1fr;
     }
 
-    .left h1 {
-        font-size: 15px;
+    .cover-main h1 {
+        font-size: 30px;
     }
 
-    .photo-box {
-        width: 130px;
-        height: 160px;
+    .cover-image {
+        width: 110px;
+        height: 140px;
     }
-    .page {
-        padding: 15px;
+    .h1.h2.p{
+        font-size: 18px;
     }
-    .cover {
-        flex-direction: column;
-    }
-
-   
 }
 
 </style>
@@ -206,88 +177,90 @@ body {
 
 <body>
 
-<div class="book-wrapper">
-    <div id="book">
+<div id="book">
 
-        <!-- COVER -->
-        <div class="page cover">
-    <div class="cover-layout">
+    <!-- COVER -->
+    <div class="page cover">
+        <div class="cover-layout">
 
-        <div class="cover-top">
-            <span class="badge">USAA</span>
-        </div>
-
-        <div class="cover-main">
-            <h1>VOTE</h1>
-            <h2>YOUR NAME</h2>
-            <p>USAA Presidential Candidate</p>
-        </div>
-
-        <div class="cover-image">
-            <img src="images/o1.jpeg" alt="Candidate">
-        </div>
-
-        <div class="cover-bottom">
-            <p>Unity • Welfare • Opportunity</p>
-            <p>🇺🇬 🇩🇿</p>
-        </div>
-
-    </div>
-</div>
-
-        <!-- INTRO -->
-        <div class="page">
-            <h2>Introduction</h2>
-            <p>I stand before you not just as a candidate, but as one of you.</p>
-        </div>
-
-        <!-- COMMUNITY -->
-        <div class="page">
-            <h2>Community</h2>
-            <div class="card-grid">
-                <div class="card"><h3>👥 Big Sibling</h3><p>Mentorship program.</p></div>
-                <div class="card"><h3>🎉 Cultural Nights</h3><p>Celebrate diversity.</p></div>
-                <div class="card"><h3>🤝 Inclusion</h3><p>Everyone matters.</p></div>
-                <div class="card"><h3>⚽ Sports</h3><p>Social engagement.</p></div>
+            <div class="cover-top">
+                <span class="badge">USAA</span>
             </div>
-        </div>
 
-        <!-- WELFARE -->
-        <div class="page">
-            <h2>Welfare</h2>
-            <div class="card-grid">
-                <div class="card"><h3>💊 Health</h3><p>Medical support.</p></div>
-                <div class="card"><h3>📚 Study Help</h3><p>Academic support.</p></div>
-                <div class="card"><h3>🍲 Food Aid</h3><p>Emergency help.</p></div>
-                <div class="card"><h3>💼 Careers</h3><p>Job guidance.</p></div>
+            <div class="cover-main">
+                <h1>VOTE</h1>
+                <h2>YOUR NAME</h2>
+                <p>USAA Presidential Candidate</p>
             </div>
+
+            <div class="cover-image">
+                <img src="images/o1.jpeg">
+            </div>
+
+            <div class="cover-bottom">
+                <p>Unity • Welfare • Opportunity</p>
+                <p>🇺🇬 🇩🇿</p>
+            </div>
+
         </div>
-
     </div>
+
+    <!-- INTRO -->
+    <div class="page">
+        <h2>Introduction</h2>
+        <p>I stand before you not just as a candidate, but as one of you.</p>
+    </div>
+
+    <!-- COMMUNITY -->
+    <div class="page">
+        <h2>Community</h2>
+        <div class="card-grid">
+            <div class="card">👥 Mentorship program</div>
+            <div class="card">🎉 Cultural events</div>
+            <div class="card">🤝 Inclusion</div>
+            <div class="card">⚽ Social engagement</div>
+        </div>
+    </div>
+
+    <!-- WELFARE -->
+    <div class="page">
+        <h2>Welfare</h2>
+        <div class="card-grid">
+            <div class="card">💊 Health support</div>
+            <div class="card">📚 Study help</div>
+            <div class="card">🍲 Food aid</div>
+            <div class="card">💼 Career guidance</div>
+        </div>
+    </div>
+
+    
+ <!-- NAV -->
+   <button id="prevBtn">◀</button>
+    <button id="nextBtn">▶</button>
+
+    <div class="footer">
+    <div>USAA Manifesto</div>
+    <div id="pageCounter">1 / 4</div>
+    <div>Unity • Welfare • Opportunity</div>
+  </div>
+
 </div>
 
-<!-- NAV -->
-<button id="prevBtn">⬅</button>
-<button id="nextBtn">➡</button>
 
-<div class="footer">
-    <div class="footer-left">USAA Manifesto</div>
-    <div class="footer-center" id="pageCounter">1 / 4</div>
-    <div class="footer-right">Unity • Welfare • Opportunity</div>
-</div>
 
 <script>
-$(document).ready(function () {
+let pageFlip;
 
-    let isMobile = window.innerWidth < 768;
+function initBook() {
 
-    const pageFlip = new St.PageFlip(document.getElementById("book"), {
-        width: isMobile ? window.innerWidth * 0.95 : 390,
-        height: isMobile ? window.innerHeight * 0.7 : 650,
-        size: "stretch",
+    const book = document.getElementById("book");
+
+    pageFlip = new St.PageFlip(book, {
+        width: window.innerWidth,
+        height: window.innerHeight,
+        size: "fixed",
         showCover: true,
-        usePortrait: true,
-        maxShadowOpacity: 0.3,
+        usePortrait: true
     });
 
     pageFlip.loadFromHTML(document.querySelectorAll("#book .page"));
@@ -295,27 +268,32 @@ $(document).ready(function () {
     $("#nextBtn").click(() => pageFlip.flipNext());
     $("#prevBtn").click(() => pageFlip.flipPrev());
 
-    $(document).keydown(function (e) {
+    document.addEventListener("keydown", (e) => {
         if (e.key === "ArrowRight") pageFlip.flipNext();
         if (e.key === "ArrowLeft") pageFlip.flipPrev();
+    });
+
+    book.addEventListener("click", (e) => {
+        if (e.clientX > window.innerWidth / 2) {
+            pageFlip.flipNext();
+        } else {
+            pageFlip.flipPrev();
+        }
     });
 
     pageFlip.on("flip", (e) => {
         const current = e.data + 1;
         const total = pageFlip.getPageCount();
-        $("#pageCounter").text(`${current} / ${total}`);
+        document.getElementById("pageCounter").innerText = `${current} / ${total}`;
     });
+}
 
-    window.addEventListener("resize", () => {
-        isMobile = window.innerWidth < 768;
-
-        pageFlip.update({
-            width: isMobile ? window.innerWidth * 0.95 : 450,
-            height: isMobile ? window.innerHeight * 0.7 : 600
-        });
-    });
-
+window.addEventListener("resize", () => {
+    location.reload(); // simplest stable fix for PageFlip fullscreen
 });
+
+$(document).ready(initBook);
+
 </script>
 
 </body>
