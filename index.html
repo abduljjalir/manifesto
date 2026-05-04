@@ -119,12 +119,13 @@ margin-left: 0;
 
 .cover-main {
     position: absolute;
-    left: -10px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
     top: 145px;
     height: 130px;
     width: 220px;
     background: darkred;
-    border-radius: 15px;
+    
     transform: translateY(-50%);
 }
 .cover-main h1,
@@ -143,16 +144,17 @@ margin-left: 0;
     font-weight: bold;
 }
 .opportunity {
-    color: darkred;
+    color: white;
     font-weight: bold;
 }
 .cover-image {
     position: absolute;
     right: 10px;
-    top: 20%;
-    width: 30vw;
+    top: 25%;
+
+    width: 40%;
     max-width: 280px;
-    height: 60vh;
+    height: 80vh;
     max-height: 350px;
     border: 5px solid white;
     border-radius: 15px;
@@ -282,6 +284,50 @@ margin-left: 0;
         padding: 0 8px;
     }
 }
+@media (max-width:500px) {
+    .cover-main {
+        left: 0;
+        top: 120px;
+        width: 50%;
+        height: auto;
+        padding: 20px;
+    }
+     .cover-main h1 {
+        font-size: 28px;
+    }
+     .cover-image {
+        position: absolute;
+        width: 50%;
+        height: auto;
+        margin-top: 15px;
+    }
+    
+}
+@media (max-width: 400px) {
+    .cover-contact {
+        font-size: 12px;
+        padding: 10px;
+    }
+    .cover-contact{
+        right: 0;
+        bottom: 90px;
+        box-shadow: #1d3557 0px 4px 10px;
+        border-radius: 12px 0 0 12px;
+
+    }
+        .cover-contact h3 {
+            font-size: 16px;
+        }
+        
+.cover-bottom {
+    position: absolute;
+    bottom: 70px;
+    left: 5px; 
+}
+.flag {
+    font-size: 18px;
+}
+}
 </style>
 </head>
 
@@ -310,7 +356,7 @@ margin-left: 0;
 
             <div class="cover-bottom">
                 <p><span class="unity">Unity</span> • <span class="welfare">Welfare</span>  • <span class="opportunity">Opportunity</span></p>
-                <p>🇺🇬 🇩🇿</p>
+                <p class="flag">🇺🇬 🇩🇿</p>
             </div>
             <div class="cover-contact">
                 <h3>Contact</h3>
@@ -541,7 +587,7 @@ function initBook() {
     pageFlip = new St.PageFlip(book, {
         width: window.innerWidth,
         height: window.innerHeight,
-        size: "fixed",
+        size: "fit",
         showCover: true,
         usePortrait: true
     });
