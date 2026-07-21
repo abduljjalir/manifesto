@@ -114,16 +114,16 @@ margin-left: 0;
     background: #1d3557;
     padding: 10px 15px;
     border-radius: 8px;
-    font-size: 18px;
+    font-size: 28px;
 }
 
 .cover-main {
     position: absolute;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    top: 145px;
-    height: 130px;
-    width: 220px;
+    top: 245px;
+    height: 280px;
+    width: 380px;
     background: darkred;
     
     transform: translateY(-50%);
@@ -133,7 +133,7 @@ margin-left: 0;
 .cover-main p {
     margin: 0;
     text-align: center;
-    font-size: 18px;
+    font-size: 38px;
 }
 .unity {
     color: #2a9d8f;
@@ -144,7 +144,7 @@ margin-left: 0;
     font-weight: bold;
 }
 .opportunity {
-    color: white;
+    color: red;
     font-weight: bold;
 }
 .cover-image {
@@ -153,8 +153,8 @@ margin-left: 0;
     top: 25%;
 
     width: 40%;
-    max-width: 280px;
-    height: 80vh;
+    max-width: 400px;
+    height: 120vh;
     max-height: 350px;
     border: 5px solid white;
     border-radius: 15px;
@@ -173,7 +173,7 @@ margin-left: 0;
     position: absolute;
     bottom: 50px;
     left: 5px;
-    font-size: 12px;
+    font-size: 22px;
 }
 .cover-contact {
     position: absolute;
@@ -191,7 +191,7 @@ margin-left: 0;
 
 .cover-contact h3 {
     margin: 0 0 5px 0;
-    font-size: 18px;
+    font-size: 28px;
 }
 
 /* ===== CARDS ===== */
@@ -259,87 +259,161 @@ margin-left: 0;
     max-width: 85%;
     font-size: 11px;
 }
+/* ==========================
+   TABLETS (768px and below)
+========================== */
+@media (max-width:768px){
 
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
-    .card-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .cover-main h1 {
-        font-size: 30px;
+    .card-grid{
+        grid-template-columns:1fr;
     }
 
-    .cover-image {
-        width: 110px;
-        height: 140px;
+    .cover-main{
+        top:130px;
+        width:auto;
+        height:auto;
+        padding:25px;
     }
-    .h1.h2.p{
-        font-size: 18px;
+
+    .cover-main h1{
+        font-size:28px;
     }
+
+    .cover-main h2{
+        font-size:30px;
+    }
+
+    .cover-main p{
+        font-size:16px;
+    }
+
+    .cover-image{
+        width:280px;
+        height:320px;
+        top:23%;
+        right:15px;
+    }
+
+    .footer{
+        font-size:12px;
+    }
+
 }
-@media (max-width: 480px) {
-    .footer {
-        font-size: 11px;
-        padding: 0 8px;
+
+/* ==========================
+   PHONES (600px and below)
+========================== */
+@media (max-width:600px){
+
+    .cover-main{
+        top:110px;
+        width:auto;
+        height:auto;
+        padding:15px;
     }
-}
-@media (max-width:500px) {
-    .cover-main {
-        left: 0;
-        top: 120px;
-        width: 50%;
-        height: auto;
-        padding: 20px;
+
+    .cover-main h1{
+        font-size:24px;
     }
-     .cover-main h1 {
-        font-size: 28px;
+
+    .cover-main h2{
+        font-size:18px;
     }
-     .cover-image {
-        position: absolute;
-        width: 50%;
-        height: auto;
-        margin-top: 15px;
+
+    .cover-main p{
+        font-size:14px;
     }
-    
-}
-@media (max-width: 400px) {
-    .cover-contact {
-        font-size: 12px;
-        padding: 10px;
+
+    .cover-image{
+        width:42%;
+        height:220px;
+        right:8px;
+        top:24%;
     }
+
     .cover-contact{
-        right: 0;
-        bottom: 110px;
-        box-shadow: #1d3557 0px 4px 10px;
-        border-radius: 12px 0 0 12px;
-
+        bottom:70px;
+        right:0;
+        padding:10px;
+        font-size:13px;
     }
-        .cover-contact h3 {
-            font-size: 16px;
-        }
-        
-.cover-bottom {
-    position: absolute;
-    bottom: 100px;
-    left: 5px; 
+
+    .cover-contact h3{
+        font-size:16px;
+    }
+
+    .cover-bottom{
+        bottom:70px;
+    }
+
+    .footer{
+        height:45px;
+        font-size:11px;
+    }
+
 }
-.flag {
-    font-size: 18px;
-}
-#book {
-    padding: 0;
-    height: 100vh;
-}
-.cover-top {
-    position: absolute;
-    top: 0;
-    left: 0;
-    
-}
-.footer {    position: fixed;
-    bottom: 0;
-    height: 45px;
+
+/* ==========================
+   SMALL PHONES (400px and below)
+========================== */
+@media (max-width:400px){
+
+    .badge{
+        font-size:15px;
+        padding:8px 12px;
+    }
+
+    .cover-main{
+        top:95px;
+        width:auto;
+        height:auto;
+        padding:12px;
+    }
+
+    .cover-main h1{
+        font-size:20px;
+    }
+
+    .cover-main h2{
+        font-size:15px;
+    }
+
+    .cover-main p{
+        font-size:12px;
+    }
+
+    .cover-image{
+        width:38%;
+        height:180px;
+        right:5px;
+        top:27%;
+    }
+
+    .cover-contact{
+        width:45%;
+        font-size:11px;
+        bottom:80px;
+    }
+
+    .cover-contact h3{
+        font-size:14px;
+    }
+
+    .cover-bottom{
+        bottom:80px;
+        font-size:11px;
+    }
+
+    .flag{
+        font-size:16px;
+    }
+
+    .footer{
+        height:42px;
+        padding:0 6px;
+        font-size:10px;
+    }
+
 }
 </style>
 </head>
@@ -572,7 +646,7 @@ margin-left: 0;
             Your vote is not just support, it is a step toward a better future for all of us.
         </p>
 
-        <h3>Vote for Leadership. Vote for Unity. Vote for Progress.</h3>
+        <h3>Vote for Leadership. Vote for Unity. Vote for Progress. Vote for a servant leader.</h3>
     </div>
 </div>
     
@@ -624,11 +698,11 @@ function initBook() {
     });
 }
 
-window.addEventListener("resize", () => {
+
     window.addEventListener("resize", () => {
     pageFlip.update();
 });// simplest stable fix for PageFlip fullscreen
-});
+
 
 $(document).ready(initBook);
 
